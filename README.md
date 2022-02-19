@@ -1,1 +1,1 @@
-# chess_board
+# ChessBoard
