@@ -1,5 +1,7 @@
+import Board from "./components/Board";
+
 const App = () => {
-  return <h1>ChessBoard</h1>;
+  return <Board />;
 };
 
 export default App;
