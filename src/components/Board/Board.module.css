@@ -13,13 +13,9 @@
 
 .board {
   display: flex;
-
-  flex-direction: row;
-  flex-wrap: wrap-reverse;
-
   border: 2px solid #b68960;
-  height: 90%;
-  width: 90%;
+  height: 92%;
+  width: 92%;
 }
 
 img {
@@ -40,18 +36,15 @@ img {
 }
 
 .angle {
-  width: 5%;
-  height: 5%;
+  width: 4%;
+  height: 4%;
   background-color: #eed6b0;
 }
 
 .letters {
   display: flex;
-
-  flex-direction: row;
-
-  width: 90%;
-  height: 5%;
+  width: 92%;
+  height: 4%;
   background-color: #eed6b0;
 }
 
@@ -64,11 +57,8 @@ img {
 
 .numbers {
   display: flex;
-
-  flex-direction: column-reverse;
-
-  width: 5%;
-  height: 90%;
+  width: 4%;
+  height: 92%;
   background-color: #eed6b0;
 }
 
@@ -79,30 +69,39 @@ img {
   height: 12.5%;
 }
 
-/* white turn */
-/* .board-white-turn {
+/* white side */
+.board_white_side {
   flex-direction: row;
   flex-wrap: wrap-reverse;
 }
 
-.numbers-white-turn {
+.numbers_white_side {
   flex-direction: column-reverse;
 }
 
-.letters-white-turn {
+.letters_white_side {
   flex-direction: row;
-} */
+}
 
-/* black turn */
-/* .board-black-turn {
+.buttons {
+  margin: 40px;
+}
+
+/* black side */
+.board_black_side {
   flex-direction: row-reverse;
   flex-wrap: wrap;
 }
 
-.numbers-black-turn {
+.numbers_black_side {
   flex-direction: column;
 }
 
-.letters-black-turn {
+.letters_black_side {
   flex-direction: row-reverse;
-} */
+}
+
+/* disable coords */
+.disable_coords {
+  visibility: hidden;
+}
