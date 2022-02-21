@@ -2,6 +2,11 @@ import { useState } from "react";
 
 import styles from "./Board.module.css";
 
+import Cell from "../Cell/Cell";
+
+import convertPresetToBoard from "./services/convertPresetToBoard";
+import preset from "./services/preset";
+
 import kw from "./images/kw.svg";
 import qw from "./images/qw.svg";
 import rw from "./images/rw.svg";
@@ -24,6 +29,8 @@ const Board = () => {
   const numbersSide = `numbers_${side}_side`;
   const lettersSide = `letters_${side}_side`;
   const visibility = showCoords ? "" : styles.disable_coords;
+
+  const board = convertPresetToBoard(preset);
 
   const switchSide = () => {
     side === "white" ? setSide("black") : setSide("white");
@@ -62,143 +69,15 @@ const Board = () => {
           <div>7</div>
           <div>8</div>
         </div>
+
         <div className={`${styles.board} ${styles[boardSide]}`}>
-          <div className={styles.black}>
-            <img src={rw} />
-          </div>
-          <div className={styles.white}>
-            <img src={nw} />
-          </div>
-          <div className={styles.black}>
-            <img src={bw} />
-          </div>
-          <div className={styles.white}>
-            <img src={qw} />
-          </div>
-          <div className={styles.black}>
-            <img src={kw} />
-          </div>
-          <div className={styles.white}>
-            <img src={bw} />
-          </div>
-          <div className={styles.black}>
-            <img src={nw} />
-          </div>
-          <div className={styles.white}>
-            <img src={rw} />
-          </div>
-
-          <div className={styles.white}>
-            <img src={pw} />
-          </div>
-          <div className={styles.black}>
-            <img src={pw} />
-          </div>
-          <div className={styles.white}>
-            <img src={pw} />
-          </div>
-          <div className={styles.black}>
-            <img src={pw} />
-          </div>
-          <div className={styles.white}>
-            <img src={pw} />
-          </div>
-          <div className={styles.black}>
-            <img src={pw} />
-          </div>
-          <div className={styles.white}>
-            <img src={pw} />
-          </div>
-          <div className={styles.black}>
-            <img src={pw} />
-          </div>
-
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-          <div className={styles.white}></div>
-          <div className={styles.black}></div>
-
-          <div className={styles.black}>
-            <img src={pb} />
-          </div>
-          <div className={styles.white}>
-            <img src={pb} />
-          </div>
-          <div className={styles.black}>
-            <img src={pb} />
-          </div>
-          <div className={styles.white}>
-            <img src={pb} />
-          </div>
-          <div className={styles.black}>
-            <img src={pb} />
-          </div>
-          <div className={styles.white}>
-            <img src={pb} />
-          </div>
-          <div className={styles.black}>
-            <img src={pb} />
-          </div>
-          <div className={styles.white}>
-            <img src={pb} />
-          </div>
-
-          <div className={styles.white}>
-            <img src={rb} />
-          </div>
-          <div className={styles.black}>
-            <img src={nb} />
-          </div>
-          <div className={styles.white}>
-            <img src={bb} />
-          </div>
-          <div className={styles.black}>
-            <img src={qb} />
-          </div>
-          <div className={styles.white}>
-            <img src={kb} />
-          </div>
-          <div className={styles.black}>
-            <img src={bb} />
-          </div>
-          <div className={styles.white}>
-            <img src={nb} />
-          </div>
-          <div className={styles.black}>
-            <img src={rb} />
-          </div>
+          {board?.map((horisontal, h) => {
+            return horisontal.map(({ color, selected }, v) => {
+              return <Cell key={`${v}${h}`} v={v} h={h} color={color} />;
+            });
+          })}
         </div>
+
         <div
           className={`${styles.numbers} ${styles[numbersSide]} ${visibility}`}
         >
